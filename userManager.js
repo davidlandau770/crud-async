@@ -1,7 +1,7 @@
 import { question } from "./node_modules/readline-sync/lib/readline-sync.js";
 import fs from "fs";
 
-const path = "./db.txt"
+const path = "./db.txt";
 
 function getName(message = "Enter your name: ") {
     const input = question(message);
@@ -29,15 +29,12 @@ function createUser(userName, path) {
     })
 }
 
-// createUser(getName(), path)
-
 function readFile(path) {
     fs.readFile(path, "utf-8", (err, data) => {
         if (err) return console.log(err.message);
         console.log(JSON.parse(data));
     })
 }
-// readFile(path)
 
 function updateUser(oldName, newName, path) {
     let exists = false;
@@ -60,8 +57,6 @@ function updateUser(oldName, newName, path) {
     })
 }
 
-// updateUser(getName("Enter old name: "), getName("Enter new name: "), path);
-
 function deleteUser(userName) {
     let exists = false;
     fs.readFile(path, "utf-8", (err, data) => {
@@ -83,4 +78,47 @@ function deleteUser(userName) {
     })
 }
 
-// deleteUser(getName(), path);
+function menu() {
+    const input = question("Choose num from menu:\n1. create user.\n2. read file.\n3. update user.\n4. delete user.\n");
+    switch (input) {
+        case "1":
+            createUser(getName(), path);
+            break;
+        case "2":
+            readFile(path);
+            break;
+        case "3":
+            updateUser(getName("Enter old name: "), getName("Enter new name: "), path);
+            break;
+        case "4":
+            deleteUser(getName(), path);
+        default:
+            console.log("@@@@");
+    }
+}
+// menu()
+
+
+
+
+
+
+
+// נסיונות פרומיס
+// function createUserPromise() {
+//     return new Promise((resolve, reject) => {
+//         const success = true;
+//         if (success) {
+//             resolve("good!");
+//         } else {
+//             reject("bad.");
+//         }
+//     });
+// }
+// doSomethingAsync()
+//     .then((result) => {
+//         console.log("good:", result);
+//     })
+//     .catch((error) => {
+//         console.log("bad:", error);
+//     });
