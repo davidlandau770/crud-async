@@ -120,27 +120,3 @@ chainedGreetings().then((res1) => console.log(res1)).catch((err1) => console.log
 
 
 
-// function chainedGreetings() {
-//     return new Promise((res) => {
-//         setTimeout(() => {
-//             console.log("Hi!");
-//             res();
-//         }, 1000);
-//     }).then(() => {
-//         return new Promise((res) => {
-//             setTimeout(() => {
-//                 console.log("How are you?");
-//                 res();
-//             }, 2000);
-//         });
-//     }).then(() => {
-//         return new Promise((res) => {
-//             setTimeout(() => {
-//                 console.log("Goodbye");
-//                 res();
-//             }, 1000);
-//         });
-//     });
-// }
-
-// chainedGreetings();
