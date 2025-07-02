@@ -1,6 +1,7 @@
 import { log } from "console";
 import { randomInt } from "crypto";
 import fs from "fs";
+import { question } from "readline-sync";
 // import { setTimeout } from "timers/promises";
 
 // שאלה 1
@@ -98,25 +99,37 @@ import fs from "fs";
 // checkFileExists("./file.txt").then((res) => console.log(res)).catch((err) => console.log(err));
 
 // שאלה 8
-function chainedGreetings() {
-    return new Promise((res, rej) => {
-        setTimeout(() => {
-            res("Hi!");
-        }, 1000)
-        return new Promise((res, rej) => {
-            setTimeout(() => {
-                res("How are you?");
-            }, 2000)
-            return new Promise((res, rej) => {
-                setTimeout(() => {
-                    res("goodbye");
-                }, 1000)
-            })
-        })
-    })
-}
-chainedGreetings().then((res1) => console.log(res1)).catch((err1) => console.log(err1)).then((res2) => console.log(res2)).catch((err2) => console.log(err2)).then((res3) => console.log(res3)).catch((err3) => console.log(err3));
+// function chainedGreetings(message, delay) {
+//     return new Promise((res) => {
+//         setTimeout(() => {
+//             res(console.log(message));
+//         }, delay)
+//     })
+// }
+// chainedGreetings("Hi", 1000)
+// .then(() => chainedGreetings("How are you?", 2000)
+// .then(() => chainedGreetings("Goodbye!", 1000)))
 
+// שאלה 9
+// function processFile(inputPath, outputPath) {
+//     return new Promise((res, rej) => {
+//         fs.readFile(inputPath, "utf-8", (err, data) => {
+//             if (err) return rej("ERROR readFileContent: " + err.message);
+//             const arrData = data.split(' ');
+//             fs.writeFile(outputPath, `Word count: ${arrData.length}`, (err) => {
+//                 if (err) return console.log(err);
+//                 res(`Word count written to ${outputPath}`);
+//             })
+//         })
+//     })
+// }
+// processFile(question("input path: "), question("output path: "))
+// .then(res => console.log(res));
 
-
-
+// שאלה 10
+// function getUserTitle(userId) {
+//     fetch(`https://jsonplaceholder.typicode.com/todos/${userId}`)
+//     .then(res => res.json())
+//     .then(data => console.log(`User 4's title: ${data.title}`))
+// }
+// getUserTitle(4)
