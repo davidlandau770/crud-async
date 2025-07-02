@@ -56,7 +56,6 @@ import fs from "fs";
 // שאלה 5
 // const url = 'https://jsonplaceholder.typicode.com/todos/1';
 // function fetchData(url) {
-//     let data = "";
 //     return new Promise((res, rej) => {
 //         fetch(url).then(x => res(x.json()))
 //     })
@@ -86,3 +85,62 @@ import fs from "fs";
 // waitAll().then((res) => console.log(res)).catch((err) => console.log(err));
 
 // שאלה 7
+// function checkFileExists(path) {
+//     const isExists = fs.existsSync(path)
+//     return new Promise((res, rej) => {
+//         if (isExists) {
+//             return res(true)
+//         } else {
+//             return rej(false)
+//         }
+//     })
+// }
+// checkFileExists("./file.txt").then((res) => console.log(res)).catch((err) => console.log(err));
+
+// שאלה 8
+function chainedGreetings() {
+    return new Promise((res, rej) => {
+        setTimeout(() => {
+            res("Hi!");
+        }, 1000)
+        return new Promise((res, rej) => {
+            setTimeout(() => {
+                res("How are you?");
+            }, 2000)
+            return new Promise((res, rej) => {
+                setTimeout(() => {
+                    res("goodbye");
+                }, 1000)
+            })
+        })
+    })
+}
+chainedGreetings().then((res1) => console.log(res1)).catch((err1) => console.log(err1)).then((res2) => console.log(res2)).catch((err2) => console.log(err2)).then((res3) => console.log(res3)).catch((err3) => console.log(err3));
+
+
+
+
+// function chainedGreetings() {
+//     return new Promise((res) => {
+//         setTimeout(() => {
+//             console.log("Hi!");
+//             res();
+//         }, 1000);
+//     }).then(() => {
+//         return new Promise((res) => {
+//             setTimeout(() => {
+//                 console.log("How are you?");
+//                 res();
+//             }, 2000);
+//         });
+//     }).then(() => {
+//         return new Promise((res) => {
+//             setTimeout(() => {
+//                 console.log("Goodbye");
+//                 res();
+//             }, 1000);
+//         });
+//     });
+// }
+
+// chainedGreetings();
